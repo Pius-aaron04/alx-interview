@@ -14,7 +14,7 @@ in exactly n H characters in the file.
 """
 
 
-def minOperations(n: int) -> int:
+def minOperations(n):
     """
     Returns the fewest number of operations needed
     to result in exactly n H characters in the file
