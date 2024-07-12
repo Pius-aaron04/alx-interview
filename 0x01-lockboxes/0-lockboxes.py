@@ -13,13 +13,13 @@ def openBox(boxes, box, unlockedBoxes):
     and recursively calls itself to open other boxes.
     """
     for key in box:
-        if key in unlockedBoxes:
+        if key in unlockedBoxes or key > len(boxes):
+            # box is already open or key is out of range
             continue
 
-        if key < len(boxes):
+        elif 0 <= key < len(boxes):
             unlockedBoxes.add(key)
             openBox(boxes, boxes[key], unlockedBoxes)
-        openBox(boxes, boxes[key], unlockedBoxes)
 
     return
 
@@ -35,9 +35,7 @@ def canUnlockAll(boxes):
     unlockedBoxes = {0}
 
     # start of a recursive call
-
     openBox(boxes, boxes[0], unlockedBoxes)
-
     # end of the call
 
     if len(unlockedBoxes) == len(boxes):

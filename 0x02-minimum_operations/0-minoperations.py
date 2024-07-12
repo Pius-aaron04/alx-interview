@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
 0-minoperations.py
@@ -27,5 +27,4 @@ def minOperations(n):
             factors.append(i)
             n = n // i
 
-    print(factors)
     return sum(factors)
