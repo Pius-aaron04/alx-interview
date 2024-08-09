@@ -20,7 +20,6 @@ request.get(url, async (err, res, body) => {
       request.get(characterURL, (err, res, body) => {
         if (err) {
           console.log(err);
-          reject();
         }
         if (res) {
           console.log(JSON.parse(body).name);
