@@ -17,16 +17,28 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
 
-    cache = [total + 1 for x in range(total + 1)]
-    cache[0] = 0
-    coins = list(sorted(coins))
+    coins = list(sorted(coins, reverse=True))
+    count = 0
 
-    for i in range(1, total + 1):
-        for coin in coins:
-            if coin <= i:
-                min_sol = cache[i - coin] + 1
-                cache[i] = min(min_sol, cache[i])
+    for coin in coins:
+        if total == 0:
+            break
+        while coin <= total:
+            total -= coin
+            count += 1
 
-    if cache[-1] == total + 1:
+    if total != 0:
         return -1
-    return cache[-1]
+    return count
+
+#    cache = [total + 1 for x in range(total + 1)]
+#    cache[0] = 0
+#    for i in range(1, total + 1):
+#        for coin in coins:
+#            if coin <= i:
+#                min_sol = cache[i - coin] + 1
+#                cache[i] = min(min_sol, cache[i])
+#
+#    if cache[-1] == total + 1:
+#        return -1
+#    return cache[-1]
